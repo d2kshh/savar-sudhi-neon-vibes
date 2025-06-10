@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -16,14 +15,7 @@ const Index = () => {
     element?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const menuItems = [
-    { name: "Cosmic Latte", price: "$4.50", description: "Our signature espresso blend with steamed milk", category: "Coffee", image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&h=300&fit=crop" },
-    { name: "Nebula Frappuccino", price: "$5.75", description: "Iced coffee with purple galaxy swirls", category: "Cold Drinks", image: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&h=300&fit=crop" },
-    { name: "Stardust Croissant", price: "$3.25", description: "Buttery croissant with a hint of lavender", category: "Pastries", image: "https://images.unsplash.com/photo-1549007994-cb92caebd54b?w=400&h=300&fit=crop" },
-    { name: "Galaxy Cake", price: "$6.50", description: "Chocolate cake with purple ombre frosting", category: "Desserts", image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=300&fit=crop" },
-    { name: "Purple Rain Tea", price: "$3.75", description: "Herbal tea blend with butterfly pea flowers", category: "Tea", image: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400&h=300&fit=crop" },
-    { name: "Midnight Mocha", price: "$5.25", description: "Dark chocolate mocha with whipped cream", category: "Coffee", image: "https://images.unsplash.com/photo-1485808191679-5f86510681a2?w=400&h=300&fit=crop" }
-  ];
+  const menuItems: any[] = [];
 
   const reviews = [
     { name: "Sarah Kim", rating: 5, text: "The ambiance is absolutely magical! The neon purple lighting creates such a cozy yet modern atmosphere." },
@@ -61,7 +53,7 @@ const Index = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(138, 43, 226, 0.3)), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQO8rwYzfa7cwmjqp0t3tK1D8jFyovdo7BPGQ&s')`
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(138, 43, 226, 0.3)), url('/lovable-uploads/4da1e0d5-476d-437b-97cd-c4ef50a335c6.png')`
           }}
         ></div>
         <div className="relative z-10 text-center space-y-8 px-4">
