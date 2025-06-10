@@ -17,12 +17,12 @@ const Index = () => {
   };
 
   const menuItems = [
-    { name: "Cosmic Latte", price: "$4.50", description: "Our signature espresso blend with steamed milk", category: "Coffee" },
-    { name: "Nebula Frappuccino", price: "$5.75", description: "Iced coffee with purple galaxy swirls", category: "Cold Drinks" },
-    { name: "Stardust Croissant", price: "$3.25", description: "Buttery croissant with a hint of lavender", category: "Pastries" },
-    { name: "Galaxy Cake", price: "$6.50", description: "Chocolate cake with purple ombre frosting", category: "Desserts" },
-    { name: "Purple Rain Tea", price: "$3.75", description: "Herbal tea blend with butterfly pea flowers", category: "Tea" },
-    { name: "Midnight Mocha", price: "$5.25", description: "Dark chocolate mocha with whipped cream", category: "Coffee" }
+    { name: "Cosmic Latte", price: "$4.50", description: "Our signature espresso blend with steamed milk", category: "Coffee", image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&h=300&fit=crop" },
+    { name: "Nebula Frappuccino", price: "$5.75", description: "Iced coffee with purple galaxy swirls", category: "Cold Drinks", image: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&h=300&fit=crop" },
+    { name: "Stardust Croissant", price: "$3.25", description: "Buttery croissant with a hint of lavender", category: "Pastries", image: "https://images.unsplash.com/photo-1549007994-cb92caebd54b?w=400&h=300&fit=crop" },
+    { name: "Galaxy Cake", price: "$6.50", description: "Chocolate cake with purple ombre frosting", category: "Desserts", image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=300&fit=crop" },
+    { name: "Purple Rain Tea", price: "$3.75", description: "Herbal tea blend with butterfly pea flowers", category: "Tea", image: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400&h=300&fit=crop" },
+    { name: "Midnight Mocha", price: "$5.25", description: "Dark chocolate mocha with whipped cream", category: "Coffee", image: "https://images.unsplash.com/photo-1485808191679-5f86510681a2?w=400&h=300&fit=crop" }
   ];
 
   const reviews = [
@@ -58,12 +58,17 @@ const Index = () => {
 
       {/* Hero Section */}
       <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-accent/10"></div>
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(138, 43, 226, 0.3)), url('https://scontent-bom1-1.cdninstagram.com/v/t51.29350-15/431993203_1124311758607481_1647397203606346506_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=18de74&_nc_ohc=RgV6RYcHCpUQ7kNvgGwqBhD&_nc_zt=23&_nc_ht=scontent-bom1-1.cdninstagram.com&edm=ANo9K5cEAAAA&_nc_gid=AUJ01jOH1sHp4IH6OhBtFkF&oh=00_AYAHw_VJWJsxJMUV7k6sWJFIKGdXm7d2zAhgAGQ3gvw3pw&oe=676FBA5A')`
+          }}
+        ></div>
         <div className="relative z-10 text-center space-y-8 px-4">
           <h1 className="text-6xl md:text-8xl font-bold gradient-text floating-animation">
             Savar Sudhi
           </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-xl md:text-2xl text-white max-w-2xl mx-auto font-semibold">
             Where cosmic flavors meet neon dreams in the heart of the city
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -92,7 +97,14 @@ const Index = () => {
           <h2 className="text-4xl font-bold text-center mb-16 gradient-text">Our Cosmic Menu</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {menuItems.map((item, index) => (
-              <Card key={index} className="bg-card border-border hover:neon-border transition-all duration-300 group">
+              <Card key={index} className="bg-card border-border hover:neon-border transition-all duration-300 group overflow-hidden">
+                <div className="aspect-video overflow-hidden">
+                  <img 
+                    src={item.image} 
+                    alt={item.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
                 <CardContent className="p-6">
                   <div className="flex justify-between items-start mb-3">
                     <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">
