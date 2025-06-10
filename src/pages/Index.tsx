@@ -15,7 +15,16 @@ const Index = () => {
     element?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const menuItems: any[] = [];
+  const menuItems = [
+    { 
+      name: "Menu Page 1", 
+      image: "https://b.zmtcdn.com/data/menus/698/21147698/60daa1cb5666c4b95ac00b16441431ab.jpg"
+    },
+    { 
+      name: "Menu Page 2", 
+      image: "https://b.zmtcdn.com/data/menus/698/21147698/be94984d96a0fa5fc3cd6f133c4ef39b.jpg"
+    }
+  ];
 
   const reviews = [
     { name: "Sarah Kim", rating: 5, text: "The ambiance is absolutely magical! The neon purple lighting creates such a cozy yet modern atmosphere." },
@@ -87,10 +96,10 @@ const Index = () => {
       <section id="menu" className="py-20 px-4">
         <div className="container mx-auto">
           <h2 className="text-4xl font-bold text-center mb-16 gradient-text">Our Cosmic Menu</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {menuItems.map((item, index) => (
               <Card key={index} className="bg-card border-border hover:neon-border transition-all duration-300 group overflow-hidden">
-                <div className="aspect-video overflow-hidden">
+                <div className="aspect-[3/4] overflow-hidden">
                   <img 
                     src={item.image} 
                     alt={item.name}
@@ -98,18 +107,9 @@ const Index = () => {
                   />
                 </div>
                 <CardContent className="p-6">
-                  <div className="flex justify-between items-start mb-3">
-                    <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">
-                      {item.name}
-                    </h3>
-                    <Badge variant="secondary" className="bg-primary/20 text-primary">
-                      {item.price}
-                    </Badge>
-                  </div>
-                  <p className="text-muted-foreground mb-3">{item.description}</p>
-                  <Badge variant="outline" className="border-primary/50 text-primary/80">
-                    {item.category}
-                  </Badge>
+                  <h3 className="text-xl font-semibold group-hover:text-primary transition-colors text-center">
+                    {item.name}
+                  </h3>
                 </CardContent>
               </Card>
             ))}
