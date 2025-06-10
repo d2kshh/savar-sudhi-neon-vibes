@@ -61,7 +61,7 @@ const Index = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(138, 43, 226, 0.3)), url('https://scontent-bom1-1.cdninstagram.com/v/t51.29350-15/431993203_1124311758607481_1647397203606346506_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=18de74&_nc_ohc=RgV6RYcHCpUQ7kNvgGwqBhD&_nc_zt=23&_nc_ht=scontent-bom1-1.cdninstagram.com&edm=ANo9K5cEAAAA&_nc_gid=AUJ01jOH1sHp4IH6OhBtFkF&oh=00_AYAHw_VJWJsxJMUV7k6sWJFIKGdXm7d2zAhgAGQ3gvw3pw&oe=676FBA5A')`
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(138, 43, 226, 0.3)), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQO8rwYzfa7cwmjqp0t3tK1D8jFyovdo7BPGQ&s')`
           }}
         ></div>
         <div className="relative z-10 text-center space-y-8 px-4">
