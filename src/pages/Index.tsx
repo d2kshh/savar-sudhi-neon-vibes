@@ -1,13 +1,39 @@
-import { useState } from "react";
+
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Badge } from "@/components/ui/badge";
-import { Star, Coffee, Users, MapPin, Phone, Mail, Clock } from "lucide-react";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { Star, Coffee, Users, MapPin, Phone, Mail, Clock, ChevronDown } from "lucide-react";
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState("home");
+  const [expandedLocation, setExpandedLocation] = useState<number | null>(null);
+
+  // Scroll spy functionality
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ["home", "menu", "about", "locations", "franchise", "gallery", "contact"];
+      const scrollPosition = window.scrollY + 100;
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const offsetTop = element.offsetTop;
+          const offsetBottom = offsetTop + element.offsetHeight;
+          
+          if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const scrollToSection = (sectionId: string) => {
     setActiveSection(sectionId);
@@ -17,20 +43,49 @@ const Index = () => {
 
   const menuItems = [
     { 
-      name: "Menu Page 1", 
+      name: "Beverages", 
       image: "https://b.zmtcdn.com/data/menus/698/21147698/60daa1cb5666c4b95ac00b16441431ab.jpg"
     },
     { 
-      name: "Menu Page 2", 
+      name: "Food", 
       image: "https://b.zmtcdn.com/data/menus/698/21147698/be94984d96a0fa5fc3cd6f133c4ef39b.jpg"
     }
   ];
 
-  const reviews = [
-    { name: "Sarah Kim", rating: 5, text: "The ambiance is absolutely magical! The neon purple lighting creates such a cozy yet modern atmosphere." },
-    { name: "Alex Johnson", rating: 5, text: "Best coffee in town! The Cosmic Latte is my new favorite. The staff is incredibly friendly too." },
-    { name: "Maya Patel", rating: 5, text: "Perfect spot for working or catching up with friends. The aesthetic is Instagram-worthy and the food is delicious!" },
-    { name: "David Chen", rating: 4, text: "Love the futuristic vibe. Great place to relax and enjoy quality coffee. Will definitely be back!" }
+  const locations = [
+    {
+      id: 1,
+      title: "Savar Sudhi, Sindhu Bhavan Road",
+      address: "123 Sindhu Bhavan Road, Ahmedabad, Gujarat 380054",
+      phone: "+91 79 1234 5678",
+      images: [
+        "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=400",
+        "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=400",
+        "https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=400"
+      ]
+    },
+    {
+      id: 2,
+      title: "Savar Sudhi, Bopal",
+      address: "456 Bopal Cross Roads, Ahmedabad, Gujarat 380058",
+      phone: "+91 79 8765 4321",
+      images: [
+        "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=400",
+        "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=400",
+        "https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=400"
+      ]
+    },
+    {
+      id: 3,
+      title: "Savar Sudhi, Surat",
+      address: "789 Ring Road, Surat, Gujarat 395007",
+      phone: "+91 261 987 6543",
+      images: [
+        "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=400",
+        "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=400",
+        "https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=400"
+      ]
+    }
   ];
 
   return (
@@ -41,7 +96,7 @@ const Index = () => {
           <div className="flex items-center justify-between">
             <h1 className="text-2xl font-bold gradient-text">Savar Sudhi</h1>
             <div className="hidden md:flex space-x-8">
-              {["home", "menu", "about", "gallery", "contact"].map((section) => (
+              {["home", "menu", "about", "locations", "franchise", "gallery", "contact"].map((section) => (
                 <button
                   key={section}
                   onClick={() => scrollToSection(section)}
@@ -49,7 +104,9 @@ const Index = () => {
                     activeSection === section ? "text-primary neon-glow" : "text-muted-foreground"
                   }`}
                 >
-                  {section === "about" ? "About Us" : section}
+                  {section === "about" ? "About Us" : 
+                   section === "locations" ? "Locate Us" :
+                   section === "franchise" ? "Franchise" : section}
                 </button>
               ))}
             </div>
@@ -103,7 +160,7 @@ const Index = () => {
                   <img 
                     src={item.image} 
                     alt={item.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
                 <CardContent className="p-6">
@@ -152,6 +209,111 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Locate Us Section */}
+      <section id="locations" className="py-20 px-4">
+        <div className="container mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-16 gradient-text">Locate Us</h2>
+          <div className="max-w-4xl mx-auto space-y-6">
+            {locations.map((location, index) => (
+              <Collapsible
+                key={location.id}
+                open={expandedLocation === location.id}
+                onOpenChange={() => setExpandedLocation(expandedLocation === location.id ? null : location.id)}
+              >
+                <Card className="bg-card border-border hover:neon-border transition-all duration-300">
+                  <CollapsibleTrigger asChild>
+                    <div className="cursor-pointer">
+                      <CardContent className="p-6">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center space-x-4">
+                            <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-accent/20 rounded-lg flex items-center justify-center">
+                              <Coffee className="w-8 h-8 text-primary" />
+                            </div>
+                            <div>
+                              <h3 className="text-xl font-semibold text-primary">{location.title}</h3>
+                              <p className="text-muted-foreground">{location.address}</p>
+                            </div>
+                          </div>
+                          <ChevronDown className={`w-6 h-6 text-primary transition-transform duration-300 ${
+                            expandedLocation === location.id ? 'rotate-180' : ''
+                          }`} />
+                        </div>
+                      </CardContent>
+                    </div>
+                  </CollapsibleTrigger>
+                  <CollapsibleContent>
+                    <CardContent className="px-6 pb-6 pt-0">
+                      <div className="border-t border-border pt-6">
+                        <div className="grid md:grid-cols-2 gap-6">
+                          <div>
+                            <h4 className="font-semibold text-primary mb-4">Image Gallery</h4>
+                            <div className="grid grid-cols-3 gap-2">
+                              {location.images.map((image, imgIndex) => (
+                                <div key={imgIndex} className="aspect-square overflow-hidden rounded-lg">
+                                  <img 
+                                    src={image} 
+                                    alt={`${location.title} - Image ${imgIndex + 1}`}
+                                    className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                                  />
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                          <div className="space-y-4">
+                            <div>
+                              <h4 className="font-semibold text-primary mb-2">Contact Information</h4>
+                              <div className="space-y-2">
+                                <div className="flex items-center space-x-2">
+                                  <Phone className="w-4 h-4 text-primary" />
+                                  <span className="text-sm">{location.phone}</span>
+                                </div>
+                                <div className="flex items-start space-x-2">
+                                  <MapPin className="w-4 h-4 text-primary mt-0.5" />
+                                  <span className="text-sm">{location.address}</span>
+                                </div>
+                              </div>
+                            </div>
+                            <Button 
+                              className="w-full bg-primary hover:bg-primary/80 text-primary-foreground"
+                              onClick={() => window.open(`tel:${location.phone}`, '_self')}
+                            >
+                              <Phone className="w-4 h-4 mr-2" />
+                              Call Now
+                            </Button>
+                          </div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </CollapsibleContent>
+                </Card>
+              </Collapsible>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Franchise Section */}
+      <section id="franchise" className="py-20 px-4 bg-muted/30">
+        <div className="container mx-auto text-center">
+          <div className="max-w-2xl mx-auto space-y-6">
+            <h2 className="text-3xl font-bold gradient-text">Join the Savar Sudhi Family</h2>
+            <p className="text-lg text-muted-foreground">
+              Interested in owning a Savar Sudhi franchise? We'd love to hear from you!
+            </p>
+            <p className="text-muted-foreground">
+              Become a part of our cosmic coffee revolution and bring the Savar Sudhi experience to your city.
+            </p>
+            <Button 
+              size="lg" 
+              className="bg-primary hover:bg-primary/80 text-primary-foreground px-8 py-4"
+              onClick={() => scrollToSection("contact")}
+            >
+              Contact Us for Franchise
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* Gallery Section */}
       <section id="gallery" className="py-20 px-4">
         <div className="container mx-auto">
@@ -163,30 +325,6 @@ const Index = () => {
                   <Coffee className="w-12 h-12 text-primary-foreground" />
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Reviews Section */}
-      <section className="py-20 px-4 bg-muted/30">
-        <div className="container mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-16 gradient-text">What Our Cosmic Visitors Say</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {reviews.map((review, index) => (
-              <Card key={index} className="bg-card border-border hover:neon-border transition-all duration-300">
-                <CardContent className="p-6">
-                  <div className="flex items-center mb-4">
-                    <div className="flex space-x-1">
-                      {[...Array(review.rating)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-primary text-primary" />
-                      ))}
-                    </div>
-                  </div>
-                  <p className="text-muted-foreground mb-4 text-sm leading-relaxed">"{review.text}"</p>
-                  <p className="font-semibold text-primary">— {review.name}</p>
-                </CardContent>
-              </Card>
             ))}
           </div>
         </div>
