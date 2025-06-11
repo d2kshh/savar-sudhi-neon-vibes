@@ -5,11 +5,12 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { Star, Coffee, Users, MapPin, Phone, Mail, Clock, ChevronDown } from "lucide-react";
+import { Star, Coffee, Users, MapPin, Phone, Mail, Clock, ChevronDown, Menu, X } from "lucide-react";
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState("home");
   const [expandedLocation, setExpandedLocation] = useState<number | null>(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Scroll spy functionality
   useEffect(() => {
@@ -37,6 +38,7 @@ const Index = () => {
 
   const scrollToSection = (sectionId: string) => {
     setActiveSection(sectionId);
+    setMobileMenuOpen(false);
     const element = document.getElementById(sectionId);
     element?.scrollIntoView({ behavior: "smooth" });
   };
@@ -92,15 +94,17 @@ const Index = () => {
     <div className="min-h-screen bg-background text-foreground">
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border">
-        <div className="container mx-auto px-4 py-4">
+        <div className="container mx-auto px-4 py-3 lg:py-4">
           <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-bold gradient-text">Savar Sudhi</h1>
-            <div className="hidden md:flex space-x-8">
+            <h1 className="text-xl lg:text-2xl font-bold gradient-text">Savar Sudhi</h1>
+            
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex space-x-6 lg:space-x-8">
               {["home", "menu", "about", "locations", "franchise", "gallery", "contact"].map((section) => (
                 <button
                   key={section}
                   onClick={() => scrollToSection(section)}
-                  className={`capitalize transition-all duration-300 hover:text-primary ${
+                  className={`capitalize transition-all duration-300 hover:text-primary text-sm lg:text-base ${
                     activeSection === section ? "text-primary neon-glow" : "text-muted-foreground"
                   }`}
                 >
@@ -110,7 +114,36 @@ const Index = () => {
                 </button>
               ))}
             </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              className="md:hidden p-2"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
           </div>
+
+          {/* Mobile Navigation Menu */}
+          {mobileMenuOpen && (
+            <div className="md:hidden mt-4 pb-4 border-t border-border">
+              <div className="flex flex-col space-y-4 pt-4">
+                {["home", "menu", "about", "locations", "franchise", "gallery", "contact"].map((section) => (
+                  <button
+                    key={section}
+                    onClick={() => scrollToSection(section)}
+                    className={`capitalize transition-all duration-300 hover:text-primary text-left py-2 ${
+                      activeSection === section ? "text-primary neon-glow" : "text-muted-foreground"
+                    }`}
+                  >
+                    {section === "about" ? "About Us" : 
+                     section === "locations" ? "Locate Us" :
+                     section === "franchise" ? "Franchise" : section}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </nav>
 
@@ -122,17 +155,17 @@ const Index = () => {
             backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(138, 43, 226, 0.3)), url('/lovable-uploads/4da1e0d5-476d-437b-97cd-c4ef50a335c6.png')`
           }}
         ></div>
-        <div className="relative z-10 text-center space-y-8 px-4">
-          <h1 className="text-6xl md:text-8xl font-bold gradient-text floating-animation">
+        <div className="relative z-10 text-center space-y-6 lg:space-y-8 px-4">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold gradient-text floating-animation">
             Savar Sudhi
           </h1>
-          <p className="text-xl md:text-2xl text-white max-w-2xl mx-auto font-semibold">
+          <p className="text-lg sm:text-xl md:text-2xl text-white max-w-2xl mx-auto font-semibold px-4">
             Where cosmic flavors meet neon dreams in the heart of the city
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
             <Button 
               size="lg" 
-              className="neon-border bg-primary hover:bg-primary/80 text-primary-foreground px-8 py-4"
+              className="neon-border bg-primary hover:bg-primary/80 text-primary-foreground px-6 lg:px-8 py-3 lg:py-4 w-full sm:w-auto"
               onClick={() => scrollToSection("menu")}
             >
               Explore Menu
@@ -140,7 +173,7 @@ const Index = () => {
             <Button 
               variant="outline" 
               size="lg" 
-              className="border-primary text-primary hover:bg-primary/10 px-8 py-4"
+              className="border-primary text-primary hover:bg-primary/10 px-6 lg:px-8 py-3 lg:py-4 w-full sm:w-auto"
               onClick={() => scrollToSection("contact")}
             >
               Visit Us
@@ -150,10 +183,10 @@ const Index = () => {
       </section>
 
       {/* Menu Section */}
-      <section id="menu" className="py-20 px-4">
+      <section id="menu" className="py-12 lg:py-20 px-4">
         <div className="container mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-16 gradient-text">Our Cosmic Menu</h2>
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <h2 className="text-3xl lg:text-4xl font-bold text-center mb-12 lg:mb-16 gradient-text">Our Cosmic Menu</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-4xl mx-auto">
             {menuItems.map((item, index) => (
               <Card key={index} className="bg-card border-border hover:neon-border transition-all duration-300 group overflow-hidden">
                 <div className="aspect-[3/4] overflow-hidden">
@@ -163,8 +196,8 @@ const Index = () => {
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold group-hover:text-primary transition-colors text-center">
+                <CardContent className="p-4 lg:p-6">
+                  <h3 className="text-lg lg:text-xl font-semibold group-hover:text-primary transition-colors text-center">
                     {item.name}
                   </h3>
                 </CardContent>
@@ -175,30 +208,30 @@ const Index = () => {
       </section>
 
       {/* About Us Section */}
-      <section id="about" className="py-20 px-4 bg-muted/30">
+      <section id="about" className="py-12 lg:py-20 px-4 bg-muted/30">
         <div className="container mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <h2 className="text-4xl font-bold gradient-text">About Savar Sudhi</h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <div className="space-y-4 lg:space-y-6">
+              <h2 className="text-3xl lg:text-4xl font-bold gradient-text">About Savar Sudhi</h2>
+              <p className="text-base lg:text-lg text-muted-foreground leading-relaxed">
                 Born from a passion for exceptional coffee and futuristic design, Savar Sudhi represents 
                 the perfect fusion of traditional brewing techniques and modern aesthetic sensibilities.
               </p>
-              <p className="text-lg text-muted-foreground leading-relaxed">
+              <p className="text-base lg:text-lg text-muted-foreground leading-relaxed">
                 Our neon-lit sanctuary offers more than just coffee – it's a portal to a world where 
                 every sip transports you to a cosmic realm of flavors. From carefully sourced beans to 
                 our signature purple-hued beverages, every detail is crafted to create an unforgettable experience.
               </p>
-              <div className="grid grid-cols-2 gap-6 pt-6">
+              <div className="grid grid-cols-2 gap-4 lg:gap-6 pt-4 lg:pt-6">
                 <div className="text-center">
-                  <Coffee className="w-8 h-8 text-primary mx-auto mb-2" />
-                  <h4 className="font-semibold">Premium Coffee</h4>
-                  <p className="text-sm text-muted-foreground">Ethically sourced beans</p>
+                  <Coffee className="w-6 lg:w-8 h-6 lg:h-8 text-primary mx-auto mb-2" />
+                  <h4 className="font-semibold text-sm lg:text-base">Premium Coffee</h4>
+                  <p className="text-xs lg:text-sm text-muted-foreground">Ethically sourced beans</p>
                 </div>
                 <div className="text-center">
-                  <Users className="w-8 h-8 text-primary mx-auto mb-2" />
-                  <h4 className="font-semibold">Community Space</h4>
-                  <p className="text-sm text-muted-foreground">Where minds connect</p>
+                  <Users className="w-6 lg:w-8 h-6 lg:h-8 text-primary mx-auto mb-2" />
+                  <h4 className="font-semibold text-sm lg:text-base">Community Space</h4>
+                  <p className="text-xs lg:text-sm text-muted-foreground">Where minds connect</p>
                 </div>
               </div>
             </div>
@@ -210,10 +243,10 @@ const Index = () => {
       </section>
 
       {/* Locate Us Section */}
-      <section id="locations" className="py-20 px-4">
+      <section id="locations" className="py-12 lg:py-20 px-4">
         <div className="container mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-16 gradient-text">Locate Us</h2>
-          <div className="max-w-4xl mx-auto space-y-6">
+          <h2 className="text-3xl lg:text-4xl font-bold text-center mb-12 lg:mb-16 gradient-text">Locate Us</h2>
+          <div className="max-w-4xl mx-auto space-y-4 lg:space-y-6">
             {locations.map((location, index) => (
               <Collapsible
                 key={location.id}
@@ -223,18 +256,18 @@ const Index = () => {
                 <Card className="bg-card border-border hover:neon-border transition-all duration-300">
                   <CollapsibleTrigger asChild>
                     <div className="cursor-pointer">
-                      <CardContent className="p-6">
+                      <CardContent className="p-4 lg:p-6">
                         <div className="flex items-center justify-between">
-                          <div className="flex items-center space-x-4">
-                            <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-accent/20 rounded-lg flex items-center justify-center">
-                              <Coffee className="w-8 h-8 text-primary" />
+                          <div className="flex items-center space-x-3 lg:space-x-4 flex-1 min-w-0">
+                            <div className="w-12 lg:w-16 h-12 lg:h-16 bg-gradient-to-br from-primary/20 to-accent/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                              <Coffee className="w-6 lg:w-8 h-6 lg:h-8 text-primary" />
                             </div>
-                            <div>
-                              <h3 className="text-xl font-semibold text-primary">{location.title}</h3>
-                              <p className="text-muted-foreground">{location.address}</p>
+                            <div className="min-w-0 flex-1">
+                              <h3 className="text-lg lg:text-xl font-semibold text-primary truncate">{location.title}</h3>
+                              <p className="text-sm lg:text-base text-muted-foreground line-clamp-2">{location.address}</p>
                             </div>
                           </div>
-                          <ChevronDown className={`w-6 h-6 text-primary transition-transform duration-300 ${
+                          <ChevronDown className={`w-5 lg:w-6 h-5 lg:h-6 text-primary transition-transform duration-300 flex-shrink-0 ml-2 ${
                             expandedLocation === location.id ? 'rotate-180' : ''
                           }`} />
                         </div>
@@ -242,11 +275,11 @@ const Index = () => {
                     </div>
                   </CollapsibleTrigger>
                   <CollapsibleContent>
-                    <CardContent className="px-6 pb-6 pt-0">
-                      <div className="border-t border-border pt-6">
-                        <div className="grid md:grid-cols-2 gap-6">
+                    <CardContent className="px-4 lg:px-6 pb-4 lg:pb-6 pt-0">
+                      <div className="border-t border-border pt-4 lg:pt-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
                           <div>
-                            <h4 className="font-semibold text-primary mb-4">Image Gallery</h4>
+                            <h4 className="font-semibold text-primary mb-3 lg:mb-4">Image Gallery</h4>
                             <div className="grid grid-cols-3 gap-2">
                               {location.images.map((image, imgIndex) => (
                                 <div key={imgIndex} className="aspect-square overflow-hidden rounded-lg">
@@ -259,16 +292,16 @@ const Index = () => {
                               ))}
                             </div>
                           </div>
-                          <div className="space-y-4">
+                          <div className="space-y-3 lg:space-y-4">
                             <div>
                               <h4 className="font-semibold text-primary mb-2">Contact Information</h4>
                               <div className="space-y-2">
                                 <div className="flex items-center space-x-2">
-                                  <Phone className="w-4 h-4 text-primary" />
+                                  <Phone className="w-4 h-4 text-primary flex-shrink-0" />
                                   <span className="text-sm">{location.phone}</span>
                                 </div>
                                 <div className="flex items-start space-x-2">
-                                  <MapPin className="w-4 h-4 text-primary mt-0.5" />
+                                  <MapPin className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
                                   <span className="text-sm">{location.address}</span>
                                 </div>
                               </div>
@@ -293,19 +326,19 @@ const Index = () => {
       </section>
 
       {/* Franchise Section */}
-      <section id="franchise" className="py-20 px-4 bg-muted/30">
+      <section id="franchise" className="py-12 lg:py-20 px-4 bg-muted/30">
         <div className="container mx-auto text-center">
-          <div className="max-w-2xl mx-auto space-y-6">
-            <h2 className="text-3xl font-bold gradient-text">Join the Savar Sudhi Family</h2>
-            <p className="text-lg text-muted-foreground">
+          <div className="max-w-2xl mx-auto space-y-4 lg:space-y-6">
+            <h2 className="text-2xl lg:text-3xl font-bold gradient-text">Join the Savar Sudhi Family</h2>
+            <p className="text-base lg:text-lg text-muted-foreground">
               Interested in owning a Savar Sudhi franchise? We'd love to hear from you!
             </p>
-            <p className="text-muted-foreground">
+            <p className="text-sm lg:text-base text-muted-foreground">
               Become a part of our cosmic coffee revolution and bring the Savar Sudhi experience to your city.
             </p>
             <Button 
               size="lg" 
-              className="bg-primary hover:bg-primary/80 text-primary-foreground px-8 py-4"
+              className="bg-primary hover:bg-primary/80 text-primary-foreground px-6 lg:px-8 py-3 lg:py-4 w-full sm:w-auto"
               onClick={() => scrollToSection("contact")}
             >
               Contact Us for Franchise
@@ -315,14 +348,14 @@ const Index = () => {
       </section>
 
       {/* Gallery Section */}
-      <section id="gallery" className="py-20 px-4">
+      <section id="gallery" className="py-12 lg:py-20 px-4">
         <div className="container mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-16 gradient-text">Neon Gallery</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <h2 className="text-3xl lg:text-4xl font-bold text-center mb-12 lg:mb-16 gradient-text">Neon Gallery</h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 lg:gap-6">
             {[1, 2, 3, 4, 5, 6].map((i) => (
               <div key={i} className="aspect-square bg-gradient-to-br from-primary/20 to-accent/20 rounded-xl overflow-hidden group cursor-pointer">
                 <div className="w-full h-full bg-gradient-to-br from-primary/30 to-accent/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <Coffee className="w-12 h-12 text-primary-foreground" />
+                  <Coffee className="w-8 lg:w-12 h-8 lg:h-12 text-primary-foreground" />
                 </div>
               </div>
             ))}
@@ -331,38 +364,38 @@ const Index = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-4">
+      <section id="contact" className="py-12 lg:py-20 px-4">
         <div className="container mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-16 gradient-text">Connect with the Cosmos</h2>
-          <div className="grid lg:grid-cols-2 gap-12">
-            <div className="space-y-8">
+          <h2 className="text-3xl lg:text-4xl font-bold text-center mb-12 lg:mb-16 gradient-text">Connect with the Cosmos</h2>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+            <div className="space-y-6 lg:space-y-8">
               <div>
-                <h3 className="text-2xl font-semibold mb-6 text-primary">Visit Our Galaxy</h3>
-                <div className="space-y-4">
+                <h3 className="text-xl lg:text-2xl font-semibold mb-4 lg:mb-6 text-primary">Visit Our Galaxy</h3>
+                <div className="space-y-3 lg:space-y-4">
                   <div className="flex items-center space-x-3">
-                    <MapPin className="w-5 h-5 text-primary" />
-                    <span>123 Neon Street, Cosmic District, City 12345</span>
+                    <MapPin className="w-5 h-5 text-primary flex-shrink-0" />
+                    <span className="text-sm lg:text-base">123 Neon Street, Cosmic District, City 12345</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <Phone className="w-5 h-5 text-primary" />
-                    <span>+1 (555) 123-CAFE</span>
+                    <Phone className="w-5 h-5 text-primary flex-shrink-0" />
+                    <span className="text-sm lg:text-base">+1 (555) 123-CAFE</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <Mail className="w-5 h-5 text-primary" />
-                    <span>hello@savarsudhi.com</span>
+                    <Mail className="w-5 h-5 text-primary flex-shrink-0" />
+                    <span className="text-sm lg:text-base">hello@savarsudhi.com</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <Clock className="w-5 h-5 text-primary" />
-                    <span>Daily: 7:00 AM - 11:00 PM</span>
+                    <Clock className="w-5 h-5 text-primary flex-shrink-0" />
+                    <span className="text-sm lg:text-base">Daily: 7:00 AM - 11:00 PM</span>
                   </div>
                 </div>
               </div>
             </div>
             <Card className="bg-card border-border">
-              <CardContent className="p-6">
-                <h3 className="text-xl font-semibold mb-6">Send Us a Message</h3>
+              <CardContent className="p-4 lg:p-6">
+                <h3 className="text-lg lg:text-xl font-semibold mb-4 lg:mb-6">Send Us a Message</h3>
                 <form className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <Input placeholder="Your Name" className="bg-muted border-border" />
                     <Input placeholder="Your Email" type="email" className="bg-muted border-border" />
                   </div>
@@ -379,10 +412,10 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-4 border-t border-border">
+      <footer className="py-6 lg:py-8 px-4 border-t border-border">
         <div className="container mx-auto text-center">
-          <h3 className="text-xl font-bold gradient-text mb-2">Savar Sudhi</h3>
-          <p className="text-muted-foreground">© 2024 Savar Sudhi Cafe. All rights reserved.</p>
+          <h3 className="text-lg lg:text-xl font-bold gradient-text mb-2">Savar Sudhi</h3>
+          <p className="text-sm lg:text-base text-muted-foreground">© 2024 Savar Sudhi Cafe. All rights reserved.</p>
         </div>
       </footer>
     </div>
