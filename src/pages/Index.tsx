@@ -150,9 +150,13 @@ const Index = () => {
       {/* Hero Section */}
       <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 hero-bg"
           style={{
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(138, 43, 226, 0.3)), url('/lovable-uploads/4da1e0d5-476d-437b-97cd-c4ef50a335c6.png')`
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(138, 43, 226, 0.3)), url('/lovable-uploads/4da1e0d5-476d-437b-97cd-c4ef50a335c6.png')`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            backgroundAttachment: 'fixed'
           }}
         ></div>
         <div className="relative z-10 text-center space-y-6 lg:space-y-8 px-4">
@@ -193,7 +197,7 @@ const Index = () => {
                   <img 
                     src={item.image} 
                     alt={item.name}
-                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300 mobile-image-fix"
                   />
                 </div>
                 <CardContent className="p-4 lg:p-6">
@@ -286,7 +290,7 @@ const Index = () => {
                                   <img 
                                     src={image} 
                                     alt={`${location.title} - Image ${imgIndex + 1}`}
-                                    className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                                    className="w-full h-full object-cover hover:scale-110 transition-transform duration-300 mobile-image-fix"
                                   />
                                 </div>
                               ))}

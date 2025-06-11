@@ -129,3 +129,22 @@
   from { box-shadow: 0 0 20px hsl(var(--primary) / 0.3); }
   to { box-shadow: 0 0 40px hsl(var(--primary) / 0.8); }
 }
+
+/* Mobile responsive background image fix */
+@media (max-width: 768px) {
+  .hero-bg {
+    background-size: cover !important;
+    background-position: center center !important;
+    background-attachment: scroll !important;
+  }
+}
+
+/* Ensure images in cards don't overflow on mobile */
+@media (max-width: 640px) {
+  .mobile-image-fix {
+    object-fit: cover;
+    object-position: center;
+    max-width: 100%;
+    height: auto;
+  }
+}
