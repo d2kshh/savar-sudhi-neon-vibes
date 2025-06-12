@@ -293,13 +293,26 @@ const Index = () => {
                             <h4 className="font-semibold text-primary mb-3 lg:mb-4">Image Gallery</h4>
                             <div className="grid grid-cols-3 gap-2">
                               {location.images.map((image, imgIndex) => (
-                                <div key={imgIndex} className="aspect-square overflow-hidden rounded-lg">
-                                  <img 
-                                    src={image} 
-                                    alt={`${location.title} - Image ${imgIndex + 1}`}
-                                    className="w-full h-full object-cover hover:scale-110 transition-transform duration-300 mobile-image-fix"
-                                  />
-                                </div>
+                                <Dialog key={imgIndex}>
+                                  <DialogTrigger asChild>
+                                    <div className="aspect-square overflow-hidden rounded-lg cursor-pointer group">
+                                      <img 
+                                        src={image} 
+                                        alt={`${location.title} - Image ${imgIndex + 1}`}
+                                        className="w-full h-full object-cover hover:scale-110 transition-transform duration-300 mobile-image-fix"
+                                      />
+                                    </div>
+                                  </DialogTrigger>
+                                  <DialogContent className="max-w-4xl w-full p-0 bg-transparent border-0">
+                                    <div className="relative">
+                                      <img 
+                                        src={image}
+                                        alt={`${location.title} - Image ${imgIndex + 1}`}
+                                        className="w-full h-auto max-h-[90vh] object-contain rounded-lg"
+                                      />
+                                    </div>
+                                  </DialogContent>
+                                </Dialog>
                               ))}
                             </div>
                           </div>
