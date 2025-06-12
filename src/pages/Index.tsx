@@ -1,16 +1,17 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Star, Coffee, Users, MapPin, Phone, Mail, Clock, ChevronDown, Menu, X } from "lucide-react";
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState("home");
   const [expandedLocation, setExpandedLocation] = useState<number | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   // Scroll spy functionality
   useEffect(() => {
@@ -91,9 +92,6 @@ const Index = () => {
   ];
 
   const galleryImages = [
-    "/lovable-uploads/691702a7-b2a1-4328-853c-d40389c20185.png",
-    "/lovable-uploads/3ba188a5-7a77-4e84-8057-ce38aca8fcff.png",
-    "/lovable-uploads/74b070d7-ef4e-48de-b8f3-823f1f0122da.png",
     "/lovable-uploads/691702a7-b2a1-4328-853c-d40389c20185.png",
     "/lovable-uploads/3ba188a5-7a77-4e84-8057-ce38aca8fcff.png",
     "/lovable-uploads/74b070d7-ef4e-48de-b8f3-823f1f0122da.png"
@@ -366,13 +364,26 @@ const Index = () => {
           <h2 className="text-3xl lg:text-4xl font-bold text-center mb-12 lg:mb-16 gradient-text">Neon Gallery</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3 lg:gap-6">
             {galleryImages.map((image, i) => (
-              <div key={i} className="aspect-square overflow-hidden rounded-xl group cursor-pointer">
-                <img 
-                  src={image}
-                  alt={`Savar Sudhi Gallery ${i + 1}`}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300 mobile-image-fix"
-                />
-              </div>
+              <Dialog key={i}>
+                <DialogTrigger asChild>
+                  <div className="aspect-square overflow-hidden rounded-xl group cursor-pointer">
+                    <img 
+                      src={image}
+                      alt={`Savar Sudhi Gallery ${i + 1}`}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300 mobile-image-fix"
+                    />
+                  </div>
+                </DialogTrigger>
+                <DialogContent className="max-w-4xl w-full p-0 bg-transparent border-0">
+                  <div className="relative">
+                    <img 
+                      src={image}
+                      alt={`Savar Sudhi Gallery ${i + 1}`}
+                      className="w-full h-auto max-h-[90vh] object-contain rounded-lg"
+                    />
+                  </div>
+                </DialogContent>
+              </Dialog>
             ))}
           </div>
         </div>
