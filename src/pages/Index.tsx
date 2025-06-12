@@ -61,9 +61,9 @@ const Index = () => {
       address: "123 Sindhu Bhavan Road, Ahmedabad, Gujarat 380054",
       phone: "+91 79 1234 5678",
       images: [
-        "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=400",
-        "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=400",
-        "https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=400"
+        "/lovable-uploads/691702a7-b2a1-4328-853c-d40389c20185.png",
+        "/lovable-uploads/3ba188a5-7a77-4e84-8057-ce38aca8fcff.png",
+        "/lovable-uploads/74b070d7-ef4e-48de-b8f3-823f1f0122da.png"
       ]
     },
     {
@@ -72,9 +72,9 @@ const Index = () => {
       address: "456 Bopal Cross Roads, Ahmedabad, Gujarat 380058",
       phone: "+91 79 8765 4321",
       images: [
-        "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=400",
-        "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=400",
-        "https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=400"
+        "/lovable-uploads/74b070d7-ef4e-48de-b8f3-823f1f0122da.png",
+        "/lovable-uploads/691702a7-b2a1-4328-853c-d40389c20185.png",
+        "/lovable-uploads/3ba188a5-7a77-4e84-8057-ce38aca8fcff.png"
       ]
     },
     {
@@ -83,11 +83,20 @@ const Index = () => {
       address: "789 Ring Road, Surat, Gujarat 395007",
       phone: "+91 261 987 6543",
       images: [
-        "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=400",
-        "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=400",
-        "https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=400"
+        "/lovable-uploads/3ba188a5-7a77-4e84-8057-ce38aca8fcff.png",
+        "/lovable-uploads/74b070d7-ef4e-48de-b8f3-823f1f0122da.png",
+        "/lovable-uploads/691702a7-b2a1-4328-853c-d40389c20185.png"
       ]
     }
+  ];
+
+  const galleryImages = [
+    "/lovable-uploads/691702a7-b2a1-4328-853c-d40389c20185.png",
+    "/lovable-uploads/3ba188a5-7a77-4e84-8057-ce38aca8fcff.png",
+    "/lovable-uploads/74b070d7-ef4e-48de-b8f3-823f1f0122da.png",
+    "/lovable-uploads/691702a7-b2a1-4328-853c-d40389c20185.png",
+    "/lovable-uploads/3ba188a5-7a77-4e84-8057-ce38aca8fcff.png",
+    "/lovable-uploads/74b070d7-ef4e-48de-b8f3-823f1f0122da.png"
   ];
 
   return (
@@ -178,7 +187,7 @@ const Index = () => {
               variant="outline" 
               size="lg" 
               className="border-primary text-primary hover:bg-primary/10 px-6 lg:px-8 py-3 lg:py-4 w-full sm:w-auto"
-              onClick={() => scrollToSection("contact")}
+              onClick={() => scrollToSection("locations")}
             >
               Visit Us
             </Button>
@@ -356,11 +365,13 @@ const Index = () => {
         <div className="container mx-auto">
           <h2 className="text-3xl lg:text-4xl font-bold text-center mb-12 lg:mb-16 gradient-text">Neon Gallery</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3 lg:gap-6">
-            {[1, 2, 3, 4, 5, 6].map((i) => (
-              <div key={i} className="aspect-square bg-gradient-to-br from-primary/20 to-accent/20 rounded-xl overflow-hidden group cursor-pointer">
-                <div className="w-full h-full bg-gradient-to-br from-primary/30 to-accent/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <Coffee className="w-8 lg:w-12 h-8 lg:h-12 text-primary-foreground" />
-                </div>
+            {galleryImages.map((image, i) => (
+              <div key={i} className="aspect-square overflow-hidden rounded-xl group cursor-pointer">
+                <img 
+                  src={image}
+                  alt={`Savar Sudhi Gallery ${i + 1}`}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300 mobile-image-fix"
+                />
               </div>
             ))}
           </div>
