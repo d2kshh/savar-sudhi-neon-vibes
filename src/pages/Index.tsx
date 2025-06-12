@@ -1,4 +1,5 @@
 
+
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -60,7 +61,7 @@ const Index = () => {
     {
       id: 1,
       title: "Savar Sudhi, Sindhu Bhavan Road",
-      address: "123 Sindhu Bhavan Road, Ahmedabad, Gujarat 380054",
+      address: "LG College, Sindhu Bhavan Marg, New, behind SHILP AARON, Bodakdev, Ahmedabad, Gujarat 380054",
       phone: "+91 79 1234 5678",
       images: [
         "/lovable-uploads/691702a7-b2a1-4328-853c-d40389c20185.png",
@@ -427,7 +428,7 @@ const Index = () => {
                 <div className="space-y-3 lg:space-y-4">
                   <div className="flex items-center space-x-3">
                     <MapPin className="w-5 h-5 text-primary flex-shrink-0" />
-                    <span className="text-sm lg:text-base">123 Neon Street, Cosmic District, City 12345</span>
+                    <span className="text-sm lg:text-base">LG College, Sindhu Bhavan Marg, New, behind SHILP AARON, Bodakdev, Ahmedabad, Gujarat 380054</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <Phone className="w-5 h-5 text-primary flex-shrink-0" />
@@ -476,3 +477,4 @@ const Index = () => {
 };
 
 export default Index;
+
