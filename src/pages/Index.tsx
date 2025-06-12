@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -200,13 +201,26 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-4xl mx-auto">
             {menuItems.map((item, index) => (
               <Card key={index} className="bg-card border-border hover:neon-border transition-all duration-300 group overflow-hidden">
-                <div className="aspect-[3/4] overflow-hidden">
-                  <img 
-                    src={item.image} 
-                    alt={item.name}
-                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300 mobile-image-fix"
-                  />
-                </div>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <div className="aspect-[3/4] overflow-hidden cursor-pointer">
+                      <img 
+                        src={item.image} 
+                        alt={item.name}
+                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300 mobile-image-fix"
+                      />
+                    </div>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-4xl w-full p-0 bg-transparent border-0">
+                    <div className="relative">
+                      <img 
+                        src={item.image}
+                        alt={item.name}
+                        className="w-full h-auto max-h-[90vh] object-contain rounded-lg"
+                      />
+                    </div>
+                  </DialogContent>
+                </Dialog>
                 <CardContent className="p-4 lg:p-6">
                   <h3 className="text-lg lg:text-xl font-semibold group-hover:text-primary transition-colors text-center">
                     {item.name}
