@@ -240,13 +240,18 @@ const Index = () => {
             <div className="space-y-4 lg:space-y-6">
               <h2 className="text-3xl lg:text-4xl font-bold gradient-text">About Savar Sudhi</h2>
               <p className="text-base lg:text-lg text-muted-foreground leading-relaxed">
-                Born from a passion for exceptional coffee and futuristic design, Savar Sudhi represents 
-                the perfect fusion of traditional brewing techniques and modern aesthetic sensibilities.
+                Savar Sudhi Café isn’t your typical café — we come alive when the city slows down.
+                We’re Ahmedabad’s go-to late-night spot where stories are shared over steaming cups and flavorful bites, long after the world goes quiet.
               </p>
               <p className="text-base lg:text-lg text-muted-foreground leading-relaxed">
-                Our neon-lit sanctuary offers more than just coffee – it's a portal to a world where 
-                every sip transports you to a cosmic realm of flavors. From carefully sourced beans to 
-                our signature purple-hued beverages, every detail is crafted to create an unforgettable experience.
+                The name “Savar Sudhi” means "till morning lasts", and that’s exactly what we offer — a warm, welcoming place to relax, refuel, and recharge through the night. Whether you’re pulling an all-nighter, out with friends, traveling late, or just craving something comforting after hours — we’ve got you.
+              </p>
+              <p className="text-base lg:text-lg text-muted-foreground leading-relaxed">
+                Our menu blends desi cravings and café classics, all made fresh with soul. From midnight snacks to early morning pick-me-ups, every item is crafted with care to match the mood of the night.
+              </p>
+              <p className="text-base lg:text-lg text-muted-foreground leading-relaxed">
+                At Savar Sudhi Café, it’s not just about food — it’s about vibes, connections, and finding a home when most of the world is asleep.<br /><br />
+                Drop by, and let’s make nights memorable — savar sudhi.
               </p>
               <div className="grid grid-cols-2 gap-4 lg:gap-6 pt-4 lg:pt-6">
                 <div className="text-center">
