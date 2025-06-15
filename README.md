@@ -61,10 +61,10 @@ This site was built using carefully crafted prompts to:
 ![Home Page](screenshots/home.png)
 
 ### 📷 Gallery Section  
-![Gallery Section](screenshots/gallery.png)
+![Gallery Section](screenshots/Gallery.png)
 
 ### 📍 Location Section  
-![Location Section](screenshots/location.png)
+![Location Section](screenshots/Location.png)
 
 ### 🍽️ Contact Us Section  
 ![Menu Section](screenshots/Contact.png)
