@@ -3,7 +3,7 @@
 This is a fully AI-generated website for a late-night café in Ahmedabad, built using **Lovable AI Website Builder**.
 
 ## 🔗 Live Project
-👉 [Visit Live Website](https://13f322ba-b87a-4e09-b9c7-d027dec7599a.lovableproject.com/)
+👉 [Visit Live Website]([https://sudhi-neon-vibes.lovable.app])
 
 ---
 
