@@ -1,73 +1,79 @@
-# Welcome to your Lovable project
+# Savar Sudhi Café — AI Generated Website 🌙
 
-## Project info
+This is a fully AI-generated website for a late-night café in Ahmedabad, built using **Lovable AI Website Builder**.
 
-**URL**: https://lovable.dev/projects/13f322ba-b87a-4e09-b9c7-d027dec7599a
+## 🔗 Live Project
+👉 [Visit Live Website](https://13f322ba-b87a-4e09-b9c7-d027dec7599a.lovableproject.com/)
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## 💡 What’s Special?
 
-**Use Lovable**
+- 100% built using **prompt engineering** (no manual coding)
+- Fully functional and responsive design
+- Custom pages: Home, Menu, About Us, Locate Us, Frenchise, Gallary, Contact
+- Automated deployment via Lovable to GitHub
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/13f322ba-b87a-4e09-b9c7-d027dec7599a) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## 💬 Prompt Engineering Role
 
-**Use your preferred IDE**
+This site was built using carefully crafted prompts to:
+- Define brand voice (late-night café vibe)
+- Generate homepage structure, content & images
+- Adjust color schemes and gallery layout
+- Modify CTA buttons and contact info
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+> All UI and content changes were done through prompt iterations, not code edits.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+---
 
-Follow these steps:
+## 🛠️ Tech Stack (Auto-generated via Lovable)
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+- Framework: Vite
+- Language: TypeScript
+- Library: React
+- UI: shadcn/ui
+- AI Builder: Lovable
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+---
 
-# Step 3: Install the necessary dependencies.
-npm i
+## 🧠 AI Tools Used
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+| Tool | Role |
+|------|------|
+| **Lovable** | Website generation & deployment |
+| **ChatGPT (optional)** | Prompt refinement |
 
-**Edit a file directly in GitHub**
+---
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## ✨ Learnings
 
-**Use GitHub Codespaces**
+- Prompt chaining to improve layout and flow
+- Understanding how AI-generated UIs use shadcn, Vite, and Tailwind
+- Site-ready output with 0% manual frontend coding
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+---
 
-## What technologies are used for this project?
+## 📸 Screenshots
 
-This project is built with:
+### 🏠 Home Page  
+![Home Page](screenshots/home.png)
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### 📷 Gallery Section  
+![Gallery Section](screenshots/gallery.png)
 
-## How can I deploy this project?
+### 📍 Location Section  
+![Location Section](screenshots/location.png)
 
-Simply open [Lovable](https://lovable.dev/projects/13f322ba-b87a-4e09-b9c7-d027dec7599a) and click on Share -> Publish.
+### 🍽️ Contact Us Section  
+![Menu Section](screenshots/Contact.png)
 
-## Can I connect a custom domain to my Lovable project?
+---
 
-Yes, you can!
+## 📬 Contact
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+Built by Daksh Patel.  
+Open to freelance AI-Prompting work and internships.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+
