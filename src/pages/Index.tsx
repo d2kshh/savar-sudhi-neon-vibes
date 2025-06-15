@@ -1,5 +1,3 @@
-
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -236,39 +234,19 @@ const Index = () => {
       {/* About Us Section */}
       <section id="about" className="py-12 lg:py-20 px-4 bg-muted/30">
         <div className="container mx-auto">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            <div className="space-y-4 lg:space-y-6">
-              <h2 className="text-3xl lg:text-4xl font-bold gradient-text">About Savar Sudhi</h2>
-              <p className="text-base lg:text-lg text-muted-foreground leading-relaxed">
-                Savar Sudhi Café isn’t your typical café — we come alive when the city slows down.
-                We’re Ahmedabad’s go-to late-night spot where stories are shared over steaming cups and flavorful bites, long after the world goes quiet.
-              </p>
-              <p className="text-base lg:text-lg text-muted-foreground leading-relaxed">
-                The name “Savar Sudhi” means "till morning lasts", and that’s exactly what we offer — a warm, welcoming place to relax, refuel, and recharge through the night. Whether you’re pulling an all-nighter, out with friends, traveling late, or just craving something comforting after hours — we’ve got you.
-              </p>
-              <p className="text-base lg:text-lg text-muted-foreground leading-relaxed">
-                Our menu blends desi cravings and café classics, all made fresh with soul. From midnight snacks to early morning pick-me-ups, every item is crafted with care to match the mood of the night.
-              </p>
-              <p className="text-base lg:text-lg text-muted-foreground leading-relaxed">
-                At Savar Sudhi Café, it’s not just about food — it’s about vibes, connections, and finding a home when most of the world is asleep.<br /><br />
-                Drop by, and let’s make nights memorable — savar sudhi.
-              </p>
-              <div className="grid grid-cols-2 gap-4 lg:gap-6 pt-4 lg:pt-6">
-                <div className="text-center">
-                  <Coffee className="w-6 lg:w-8 h-6 lg:h-8 text-primary mx-auto mb-2" />
-                  <h4 className="font-semibold text-sm lg:text-base">Premium Coffee</h4>
-                  <p className="text-xs lg:text-sm text-muted-foreground">Ethically sourced beans</p>
-                </div>
-                <div className="text-center">
-                  <Users className="w-6 lg:w-8 h-6 lg:h-8 text-primary mx-auto mb-2" />
-                  <h4 className="font-semibold text-sm lg:text-base">Community Space</h4>
-                  <p className="text-xs lg:text-sm text-muted-foreground">Where minds connect</p>
-                </div>
-              </div>
-            </div>
-            <div className="relative">
-              <div className="aspect-square bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl pulse-glow"></div>
-            </div>
+          <div className="max-w-3xl mx-auto space-y-6">
+            <h2 className="text-3xl lg:text-4xl font-bold gradient-text text-center mb-6">About Savar Sudhi</h2>
+            <p className="text-base lg:text-lg text-muted-foreground leading-relaxed whitespace-pre-line">
+              Savar Sudhi Café isn’t your typical café — we come alive when the city slows down. We’re Ahmedabad’s go-to late-night spot where stories are shared over steaming cups and flavorful bites, long after the world goes quiet.
+
+              The name “Savar Sudhi” means "till morning lasts", and that’s exactly what we offer — a warm, welcoming place to relax, refuel, and recharge through the night. Whether you’re pulling an all-nighter, out with friends, traveling late, or just craving something comforting after hours — we’ve got you.
+
+              Our menu blends desi cravings and café classics, all made fresh with soul. From midnight snacks to early morning pick-me-ups, every item is crafted with care to match the mood of the night.
+
+              At Savar Sudhi Café, it’s not just about food — it’s about vibes, connections, and finding a home when most of the world is asleep.
+
+              Drop by, and let’s make nights memorable — savar sudhi.
+            </p>
           </div>
         </div>
       </section>
@@ -482,4 +460,3 @@ const Index = () => {
 };
 
 export default Index;
-
