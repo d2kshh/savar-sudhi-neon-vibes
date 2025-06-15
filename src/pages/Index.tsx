@@ -55,41 +55,33 @@ const Index = () => {
     }
   ];
 
-  const locations = [
-    {
-      id: 1,
-      title: "Savar Sudhi, Sindhu Bhavan Road",
-      address: "LG College, Sindhu Bhavan Marg, New, behind SHILP AARON, Bodakdev, Ahmedabad, Gujarat 380054",
-      phone: "+91 79 1234 5678",
-      images: [
-        "/lovable-uploads/691702a7-b2a1-4328-853c-d40389c20185.png",
-        "/lovable-uploads/3ba188a5-7a77-4e84-8057-ce38aca8fcff.png",
-        "/lovable-uploads/74b070d7-ef4e-48de-b8f3-823f1f0122da.png"
-      ]
-    },
-    {
-      id: 2,
-      title: "Savar Sudhi, Bopal",
-      address: "456 Bopal Cross Roads, Ahmedabad, Gujarat 380058",
-      phone: "+91 79 8765 4321",
-      images: [
-        "/lovable-uploads/74b070d7-ef4e-48de-b8f3-823f1f0122da.png",
-        "/lovable-uploads/691702a7-b2a1-4328-853c-d40389c20185.png",
-        "/lovable-uploads/3ba188a5-7a77-4e84-8057-ce38aca8fcff.png"
-      ]
-    },
-    {
-      id: 3,
-      title: "Savar Sudhi, Surat",
-      address: "789 Ring Road, Surat, Gujarat 395007",
-      phone: "+91 261 987 6543",
-      images: [
-        "/lovable-uploads/3ba188a5-7a77-4e84-8057-ce38aca8fcff.png",
-        "/lovable-uploads/74b070d7-ef4e-48de-b8f3-823f1f0122da.png",
-        "/lovable-uploads/691702a7-b2a1-4328-853c-d40389c20185.png"
-      ]
-    }
-  ];
+const locations = [
+  {
+    id: 1,
+    title: "Savar Sudhi, Sindhu Bhavan Road",
+    address: "LG College, Sindhu Bhavan Marg, New, behind SHILP AARON, Bodakdev, Ahmedabad, Gujarat 380054",
+    phone: "+910000000000",
+    images: [
+      "/lovable-uploads/691702a7-b2a1-4328-853c-d40389c20185.png",
+      "/lovable-uploads/3ba188a5-7a77-4e84-8057-ce38aca8fcff.png",
+      "/lovable-uploads/74b070d7-ef4e-48de-b8f3-823f1f0122da.png"
+    ]
+  },
+  {
+    id: 2,
+    title: "Savar Sudhi, Bopal",
+    address: "456 Bopal Cross Roads, Ahmedabad, Gujarat 380058",
+    phone: "+910000000000",
+    images: []
+  },
+  {
+    id: 3,
+    title: "Savar Sudhi, Surat",
+    address: "789 Ring Road, Surat, Gujarat 395007",
+    phone: "+910000000000",
+    images: []
+  }
+];
 
   const galleryImages = [
     "/lovable-uploads/691702a7-b2a1-4328-853c-d40389c20185.png",
@@ -287,50 +279,56 @@ const Index = () => {
                     <CardContent className="px-4 lg:px-6 pb-4 lg:pb-6 pt-0">
                       <div className="border-t border-border pt-4 lg:pt-6">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
-                          <div>
-                            <h4 className="font-semibold text-primary mb-3 lg:mb-4">Image Gallery</h4>
-                            <div className="grid grid-cols-3 gap-2">
-                              {location.images.map((image, imgIndex) => (
-                                <Dialog key={imgIndex}>
-                                  <DialogTrigger asChild>
-                                    <div className="aspect-square overflow-hidden rounded-lg cursor-pointer group">
-                                      <img 
-                                        src={image} 
-                                        alt={`${location.title} - Image ${imgIndex + 1}`}
-                                        className="w-full h-full object-cover hover:scale-110 transition-transform duration-300 mobile-image-fix"
-                                      />
-                                    </div>
-                                  </DialogTrigger>
-                                  <DialogContent className="max-w-4xl w-full p-0 bg-transparent border-0">
-                                    <div className="relative">
-                                      <img 
-                                        src={image}
-                                        alt={`${location.title} - Image ${imgIndex + 1}`}
-                                        className="w-full h-auto max-h-[90vh] object-contain rounded-lg"
-                                      />
-                                    </div>
-                                  </DialogContent>
-                                </Dialog>
-                              ))}
+                          {/* Only render image gallery for Sindhu Bhavan Road which has images */}
+                          {location.images && location.images.length > 0 ? (
+                            <div>
+                              <h4 className="font-semibold text-primary mb-3 lg:mb-4">Image Gallery</h4>
+                              <div className="grid grid-cols-3 gap-2">
+                                {location.images.map((image, imgIndex) => (
+                                  <Dialog key={imgIndex}>
+                                    <DialogTrigger asChild>
+                                      <div className="aspect-square overflow-hidden rounded-lg cursor-pointer group">
+                                        <img 
+                                          src={image} 
+                                          alt={`${location.title} - Image ${imgIndex + 1}`}
+                                          className="w-full h-full object-cover hover:scale-110 transition-transform duration-300 mobile-image-fix"
+                                        />
+                                      </div>
+                                    </DialogTrigger>
+                                    <DialogContent className="max-w-4xl w-full p-0 bg-transparent border-0">
+                                      <div className="relative">
+                                        <img 
+                                          src={image}
+                                          alt={`${location.title} - Image ${imgIndex + 1}`}
+                                          className="w-full h-auto max-h-[90vh] object-contain rounded-lg"
+                                        />
+                                      </div>
+                                    </DialogContent>
+                                  </Dialog>
+                                ))}
+                              </div>
                             </div>
-                          </div>
+                          ) : (
+                            // Empty div so content grid stays aligned for locations without gallery
+                            <div></div>
+                          )}
                           <div className="space-y-3 lg:space-y-4">
                             <div>
                               <h4 className="font-semibold text-primary mb-2">Contact Information</h4>
                               <div className="space-y-2">
                                 <div className="flex items-center space-x-2">
                                   <Phone className="w-4 h-4 text-primary flex-shrink-0" />
-                                  <span className="text-sm">{location.phone}</span>
+                                  <span className="text-sm lg:text-base">+910000000000</span>
                                 </div>
                                 <div className="flex items-start space-x-2">
                                   <MapPin className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                                  <span className="text-sm">{location.address}</span>
+                                  <span className="text-sm lg:text-base">{location.address}</span>
                                 </div>
                               </div>
                             </div>
                             <Button 
                               className="w-full bg-primary hover:bg-primary/80 text-primary-foreground"
-                              onClick={() => window.open(`tel:${location.phone}`, '_self')}
+                              onClick={() => window.open(`tel:+910000000000`, '_self')}
                             >
                               <Phone className="w-4 h-4 mr-2" />
                               Call Now
@@ -415,7 +413,7 @@ const Index = () => {
                   </div>
                   <div className="flex items-center space-x-3">
                     <Phone className="w-5 h-5 text-primary flex-shrink-0" />
-                    <span className="text-sm lg:text-base">+1 (555) 123-CAFE</span>
+                    <span className="text-sm lg:text-base">+910000000000</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <Mail className="w-5 h-5 text-primary flex-shrink-0" />
